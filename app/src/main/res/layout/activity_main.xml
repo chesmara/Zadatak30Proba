@@ -19,10 +19,13 @@
         android:layout_height="wrap_content">
 
 
-
-
     </android.support.design.widget.AppBarLayout>
 
+    <ListView
+        android:id="@+id/listaGlumaca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+    </ListView>
 
 </RelativeLayout>
