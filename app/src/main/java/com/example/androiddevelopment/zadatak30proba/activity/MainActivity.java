@@ -20,7 +20,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.androiddevelopment.zadatak30proba.R;
-import com.example.androiddevelopment.zadatak30proba.db1.DatabaseHelper;
+import com.example.androiddevelopment.zadatak30proba.db1.model.DatabaseHelper;
 import com.example.androiddevelopment.zadatak30proba.db1.model.Glumac;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
