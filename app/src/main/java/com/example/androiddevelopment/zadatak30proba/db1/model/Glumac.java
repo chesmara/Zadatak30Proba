@@ -44,7 +44,7 @@ public class Glumac {
     private String image;
 
 */
-    @ForeignCollectionField(foreignFieldName = "filmovi", eager=true)
+    @ForeignCollectionField(columnName = FIELD_NAME_FILMOVI, eager=true)
     private ForeignCollection<Filmovi> filmovi;
 
 
@@ -89,9 +89,19 @@ public class Glumac {
         this.birthday = birthday;
     }
 
+    public ForeignCollection<Filmovi> getFilmovi() {
+        return filmovi;
+    }
+
+    public void setFilmovi(ForeignCollection<Filmovi> filmovi) {
+        this.filmovi = filmovi;
+    }
+
     public void setRating(String rating) {
         this.rating = rating;
     }
+
+
 
    /* public String getImage() {
         return image;

@@ -1,22 +1,22 @@
 package com.example.androiddevelopment.zadatak30proba.activity;
 
 import android.app.Dialog;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
+
+
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
+
 import android.widget.Toast;
 
 import com.example.androiddevelopment.zadatak30proba.R;
@@ -25,7 +25,7 @@ import com.example.androiddevelopment.zadatak30proba.db1.model.Glumac;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_create:
                 addItem();
-                Toast.makeText(this, "Opcija unos novog glumca pokrenuta", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Unos novog glumca!!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_update:
-                //refresh ();
+               refresh ();
                 Toast.makeText(this, "Osvezavanje liste glumaca!!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_delete:
-                Toast.makeText(this, "Action " + getString(R.string.fragment_detal_action_delete) + " executed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Opcija brisanja glumca!!", Toast.LENGTH_SHORT).show();
                 break;
         }
 
@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
                 glumac.setRating(rating);
                 glumac.setBirthday(birthday);
 
+
+
+
+
                 Toast.makeText(MainActivity.this,"posle", Toast.LENGTH_SHORT).show();
 
                 try {
@@ -110,6 +114,14 @@ public class MainActivity extends AppCompatActivity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+
+
+
+
+
+
+
+
 
             }
         });
@@ -127,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public DatabaseHelper getDatabaseHelper() {
         if (databaseHelper == null) {
             databaseHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
@@ -135,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void refresh() {
+    private void refreshSimo() {
         ListView listview = (ListView) findViewById(R.id.listaGlumaca);
 
         if (listview != null){
@@ -160,23 +173,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void refresh(){
 
+        ListView listview = (ListView) findViewById(R.id.listaGlumaca);
 
+        ArrayAdapter<Glumac> glumacArrayAdapter = new ArrayAdapter<Glumac> (this, R.layout.list_item);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        listview.setAdapter(glumacArrayAdapter);
+    }
 
 
 
@@ -201,7 +205,13 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
     }
 
+    @Override
+    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+    }
 
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

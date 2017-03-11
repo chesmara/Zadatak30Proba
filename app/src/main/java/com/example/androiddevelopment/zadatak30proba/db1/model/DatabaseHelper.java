@@ -11,8 +11,7 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 
-
-/**
+/**aba
  * Created by milossimic on 11/4/16.
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
@@ -33,6 +32,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     //Prilikom kreiranja baze potrebno je da pozovemo odgovarajuce metode biblioteke
     //prilikom kreiranja moramo pozvati TableUtils.createTable za svaku tabelu koju imamo
+
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
@@ -57,7 +57,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     //jedan Dao objekat sa kojim komuniciramo. Ukoliko imamo vise tabela
     //potrebno je napraviti Dao objekat za svaku tabelu
-    public Dao<Glumac, Integer> getProductDao() throws SQLException {
+    public Dao<Glumac, Integer> getGlumacDao() throws SQLException {
         if (mGlumacDao == null) {
             mGlumacDao = getDao(Glumac.class);
         }
@@ -65,7 +65,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return mGlumacDao;
     }
 
-    public Dao<Filmovi, Integer> getCategoryDao() throws SQLException {
+    public Dao<Filmovi, Integer> getFilmoviDao() throws SQLException {
         if (mFilmoviDao == null) {
             mFilmoviDao = getDao(Filmovi.class);
         }
