@@ -3,6 +3,7 @@ package com.example.androiddevelopment.zadatak30proba.activity;
 import android.app.Dialog;
 
 
+import android.content.Intent;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -180,6 +182,17 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<Glumac> glumacArrayAdapter = new ArrayAdapter<Glumac> (this, R.layout.list_item);
 
         listview.setAdapter(glumacArrayAdapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
+
+
+            }
+
+        });
     }
 
 
